@@ -1,0 +1,51 @@
+<div class="jumbotron text-center" style="padding-top: 0px; padding-bottom: 0px;">
+  <img src="/logo.png" style="max-width: 100px;">
+  <h1 style="font-size: 30px">M<span style="color: grey; font-size: 30px;">edu</span>za</h1>
+  <p>Выбор профессии - это легко!</p> 
+</div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Вы...</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-footer">
+                <a href="/register/abit" type="submit" class="btn btn-primary"style="color: black;">Абитуриент</a>
+                <a href="/register/stud" type="submit" class="btn btn-primary"style="color: black;">Студент</a>
+                <a href="/register/univ" type="submit" class="btn btn-primary"style="color: black;">ВУЗ</a>
+                </div>
+                </div>
+                </div>
+                </div>
+<nav class="navbar navbar-expand-sm bg-light" style="justify-content: space-between; padding-left: 77.2px; padding-right: 77.2px;">
+
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="/">Домашняя</a>
+    </li>
+    {{#user}}
+    <li class="nav-item">
+      <a class="nav-link" href="/profile">Мой профиль</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/users">Просмотреть списки</a>
+    </li>
+    {{/user}}
+    {{#user.speciality}}
+    <li class="nav-item">
+      <a class="nav-link" href="/vacancies">Просмотреть вакансии</a>
+    </li>
+    {{/user.speciality}}
+  </ul>
+    <span style="right: 0px;">
+    {{#user}}Привет, {{user.login}} | <a href = "/logout">Выйти</a>{{/user}}
+        {{^user}}Привет, гость! | <a href = "/register" data-toggle="modal" data-target="#exampleModal">Регистрация</a> | <a href = "/login">Авторизация</a>{{/user}}</div></b>
+    </span>
+
+</nav>

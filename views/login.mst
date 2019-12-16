@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    {{> head}}
+    <title>Registration</title>
+</head>
+<body>
+    
+{{> header}}
+  
+<div class="container">
+  <div class="row">
+    <form class="login" action="/login" method="post" enctype="multipart/form-data">
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="validationDefault01">Имя пользователя</label>
+        <input name="username" minlength="4" type="text" class="form-control" id="validationDefault01" placeholder="Имя пользователя" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="validationDefault02">Пароль</label>
+        <input name="password" minlength="6" type="password" class="form-control" id="validationDefault02" placeholder="Пароль" required>
+      </div>
+      <div class="col-md-4 mb-3">
+      {{err}}<br>
+      </div>
+    </div>
+    <br><button class="btn btn-primary" type="submit">Логин</button>
+  </form>
+  </div>
+</div>
+
+{{> footer}}
+</body>
+</html>

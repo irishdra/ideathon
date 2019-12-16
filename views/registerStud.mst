@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    {{> head}}
+    <title>Registration</title>
+</head>
+<body>
+    
+{{> header}}
+  
+<div class="container">
+  <div class="row">
+    <form class="registration" action="/register" method="post" enctype="multipart/form-data">
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validationDefault01">Имя пользователя</label>
+        <input name="login" minlength="4" type="text" class="form-control" id="validationDefault01" placeholder="Имя пользователя" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationDefault01">ФИО</label>
+        <input name="fullname" minlength="4"type="text" class="form-control" id="validationDefault01" placeholder="ФИО" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationDefault01">E-mail</label>
+        <input name="email" minlength="4"maxlength="20" type="email" class="form-control" id="validationDefault01" placeholder="E-mail" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationDefault01">Student ticket </label>
+        <input name="studtic" minlength="4" maxlength="20" type="text" class="form-control" id="validationDefault01" placeholder="Student Ticket" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationDefault01">Speciality</label>
+        <input name="speciality" minlength="4" maxlength="20" type="text" class="form-control" id="validationDefault01" placeholder="Speciality" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationDefault02">Enter password</label>
+        <input name="password" minlength="6" type="password" class="form-control" id="validationDefault02" placeholder="Password" required>
+      </div>
+      <div class="col-md-4 mb-3">
+          <label for="validationDefault02">Repeat password</label>
+          <input name="repeatPassword" minlength="6" type="password" class="form-control" id="validationDefault02" placeholder="Repeat your password" required><br>
+      </div>
+      <input type="hidden" name="role" value="2">
+      {{err}}<br>
+</div>  
+    
+    <button class="btn btn-primary" type="submit">Зарегистрироваться</button>
+  </form>
+  </div>
+</div>
+
+{{> footer}}
+
+</body>
+</html>

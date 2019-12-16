@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    {{> head}}
+    <title>Registration</title>
+</head>
+<body>
+    
+{{> header}}
+  
+<div class="container">
+{{#users}}
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">{{#fullname}}{{fullname}}{{/fullname}}{{^fullname}}{{name}}{{/fullname}}</h4>
+            <p class="card-text">{{bio}}</p>
+            <a href="/profile/{{_id}}" class="card-link">Перейти к профилю</a>
+        </div>
+    </div>
+{{/users}}
+</div>
+{{> footer}}
+</body>
+</html>

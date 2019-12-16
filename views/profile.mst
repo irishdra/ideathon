@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+{{> head}}
+</head>
+<body>
+
+{{> header}}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5">
+{{#isAbit}}
+<div class="card" style="width:400px;margin:30px">
+<button type="button" class="btn btn-warning" style="position: absolute; top: 10px; left: 10px; color: #ffffff;">★</button>
+    <img class="card-img-top" src="{{userProf.avaUrl}}" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">{{userProf.fullname}}</h4>
+      <h6 class="card-title">Абітурієнт</h6>
+      <p class="card-text">{{userProf.bio}}</p>
+      {{#curUsIsUniv}}
+          <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+          <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Введите сообщение к приглашению:</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+          <div class="modal-footer">
+          <form action="/profile/message" method="post" style="width: 100%;" enctype="multipart/form-data">
+            <div style="display: flex; flex-direction: row; justify-content: center;">
+              <input type="hidden" name="userId" value="{{userProf._id}}">
+              <input type="hidden" name="vuzId" value="{{user._id}}">
+              <input class="form-control" type="text" name="message" placeholder="Message" style="width: 100%;" required>
+              <input class="btn btn-success" type="submit" value="Отправить" style="color: black;">
+            </div>
+          </form>
+          </div>
+          </div>
+          </div>
+          </div>
+          <button type="button" data-toggle="modal" data-target="#exampleModal1" class="btn btn-success" style="position: absolute; right: 10px; top: 10px; color: #ffffff;">Оставить приглашение</button>
+      {{/curUsIsUniv}}
+    </div>
+  </div>
+{{/isAbit}}
+{{#isStud}}
+<div class="card" style="width:400px;margin:30px">
+    <img class="card-img-top" src="{{userProf.avaUrl}}" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title">{{userProf.fullname}}</h4>
+      <h6 class="card-title">Студент</h6>
+      <p class="card-text">{{userProf.bio}}</p>
+    </div>
+  </div>
+{{/isStud}}
+{{#isUniv}}
+<div class="card" style="width:400px;margin:30px">
+    <img class="card-img-top" src="{{userProf.avaUrl}}" alt="Card image" style="object-fit: cover;width: 400px;height: 400px;">
+    <div class="card-body">
+      <h4 class="card-title">{{userProf.name}}</h4>
+      <h6 class="card-title">Университет</h6>
+      <p class="card-text">{{userProf.bio}}</p>
+      <h6 class="card-title">Спеціальності:</h6>
+      <input data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="89" value="104 Физика и астрономия" disabled/>
+      <input data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="92" value="101 Экология" disabled/>
+      <input data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="22" value="111 Математика" disabled/>
+      <input data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="24" value="171 Электроника" disabled/>
+      {{#curUsIsStud}}
+          <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+          <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Введите сообщение к отзыву:</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          </div>
+          <div class="modal-footer">
+          <form action="/profile/message" method="post" style="width: 100%;" enctype="multipart/form-data">
+            <div style="display: flex; flex-direction: row; justify-content: center;">
+              <input type="hidden" name="userId" value="{{userProf._id}}">
+              <input type="hidden" name="vuzId" value="{{user._id}}">
+              <input class="form-control" type="text" name="message" placeholder="Message" style="width: 100%;" required>
+              <input class="btn btn-success" type="submit" value="Отправить" style="color: black;">
+            </div>
+          </form>
+          </div>
+          </div>
+          </div>
+          </div>
+          <button type="button" data-toggle="modal" data-target="#exampleModal1" class="btn btn-success" style="position: absolute; right: 10px; top: 10px; color: #ffffff;">Оставить отзыв</button>
+      {{/curUsIsStud}}
+    </div>
+  </div>
+{{/isUniv}}
+    </div>
+    <div class="col-sm-7">
+<div style="overflow: scroll; margin-top: 30px; height: 90%; padding: 10px; border: 1px solid rgba(0,0,0,.125); border-radius: .25rem; background-color: #f8f9fa!important;">
+{{#isAbit}}
+    {{#messages}}
+    <div class="media border p-3" style="padding-left: 0; margin-top: 30px; background-color: #ffffff;">
+        <img src="{{author.avaUrl}}" class="mr-3 mt-3 rounded-circle" style="object-fit: cover;width: 60px;height: 60px;">
+            <div class="media-body">
+                <h4>{{author.name}} <small><i>{{date}}</i></small></h4>
+                <p>{{message}}</p>
+            </div>
+        </div>
+    {{/messages}}
+{{/isAbit}}
+{{#isStud}}
+  {{#vacancies}}
+    <div class="media border p-3" style="padding-left: 0; margin-top: 30px; background-color: #ffffff;">
+            <div class="media-body">
+                <h4>{{company}} <small><i>{{date}}</i></small></h4>
+                <h6>Тема: {{topic}}</h6>
+                <p>{{message}}</p>
+                <p><a href="{{test}}">Тест здесь</a></p>
+            </div>
+        </div>
+    {{/vacancies}}
+{{/isStud}}
+{{#isUniv}}
+  {{#messages}}
+    <div class="media border p-3" style="padding-left: 0; margin-top: 30px; background-color: #ffffff;">
+        <img src="{{author.avaUrl}}" class="mr-3 mt-3 rounded-circle" style="object-fit: cover;width: 60px;height: 60px;">
+            <div class="media-body">
+                <h4>{{author.fullname}} <small><i>{{date}}</i></small></h4>
+                <p>{{message}}</p>
+            </div>
+        </div>
+    {{/messages}}
+{{/isUniv}}
+</div>
+</div>
+</div>
+</div>
+</div>
+{{> footer}}
+</body>
+</html>\
